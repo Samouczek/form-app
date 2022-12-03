@@ -21,7 +21,7 @@ export const theme = createTheme({
 		MuiFormLabel: {
 			styleOverrides: {
 				root: ({ theme }) => ({
-					fontFamily: ['Intern', 'sans-serif'].join(','),
+					fontFamily: ['Inter', 'sans-serif'].join(','),
 					color: theme.palette.text.primary,
 					fontWeight: 700,
 					fontSize: '1.25rem',
@@ -32,8 +32,9 @@ export const theme = createTheme({
 		MuiFormHelperText: {
 			styleOverrides: {
 				root: ({ theme }) => ({
-					fontFamily: ['Lato', 'sans-serif'].join(','),
+					fontFamily: ['Inter', 'sans-serif'].join(','),
 					color: theme.palette.error.main,
+					fontWeight: 300,
 					fontSize: '1.25rem',
 					lineHeight: '2rem',
 				}),
@@ -55,3 +56,9 @@ theme.breakpoints.values.sm = 768;
 theme.breakpoints.values.md = 1024;
 theme.breakpoints.values.lg = 1280;
 theme.breakpoints.values.xl = 1920;
+
+export const customThemeColors = {
+	background: '#D9D9D9',
+	backgroundImage: '#917878',
+	backgroundImageShadow: '#362C2C63',
+};
