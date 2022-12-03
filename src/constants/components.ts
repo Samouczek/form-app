@@ -1,5 +1,9 @@
 export const PERSON_PERFORMING_TASK = 'imie i nazwisko';
 
+export const PROFILE = {
+	AGE: 'age:',
+	EYE_COLOR: 'eye color:',
+};
 export const REGISTRATION = {
 	HEADING: 'FORMULARZ REJESTRACYJNY',
 	LOGIN_LABEL: 'Login:',
