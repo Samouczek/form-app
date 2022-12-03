@@ -13,8 +13,8 @@ export const theme = createTheme({
 			styleOverrides: {
 				root: {
 					fontFamily: ['Lato', 'sans-serif'].join(','),
-					fontStyle: 'italic',
-					fontWeight: 300,
+					fontStyle: 'normal',
+					fontWeight: 400,
 				},
 			},
 		},
@@ -53,12 +53,13 @@ theme.palette.secondary.dark = '#40483A';
 
 theme.breakpoints.values.xs = 390;
 theme.breakpoints.values.sm = 768;
-theme.breakpoints.values.md = 1024;
+theme.breakpoints.values.md = 1130;
 theme.breakpoints.values.lg = 1280;
 theme.breakpoints.values.xl = 1920;
 
 export const customThemeColors = {
 	background: '#D9D9D9',
-	backgroundImage: '#917878',
+	backgroundImage: ' rgba(54, 44, 44, 0.39)',
 	backgroundImageShadow: '#362C2C63',
+	buttonShadow: '#000000BF',
 };
