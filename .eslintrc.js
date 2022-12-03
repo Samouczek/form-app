@@ -1,0 +1,37 @@
+module.exports = {
+	env: {
+		browser: true,
+		es2021: true,
+	},
+	extends: ['plugin:react/recommended', 'prettier'],
+	parser: '@typescript-eslint/parser',
+	parserOptions: {
+		ecmaFeatures: {
+			jsx: true,
+		},
+		ecmaVersion: 'latest',
+		sourceType: 'module',
+	},
+	plugins: ['react', '@typescript-eslint'],
+	rules: {
+		'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
+		'react/react-in-jsx-scope': 'off',
+		'react/function-component-definition': 0,
+		'react/no-unused-prop-types': 0,
+		'react/jsx-props-no-spreading': 0,
+		'import/no-unresolved': 0,
+		'import/no-default-export': 0,
+		'import/prefer-default-export': 0,
+		'import/order': 0,
+		'import/extensions': 0,
+		'consistent-return': 0,
+		'no-extra-boolean-cast': 0,
+		'default-param-last': 0,
+		'no-empty-function': 0,
+		'no-var': 2,
+		'no-undef': 0,
+		radix: 0,
+		'arrow-body-style': 0,
+		'array-callback-return': 0,
+	},
+};

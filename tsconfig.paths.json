@@ -1,0 +1,13 @@
+{
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"@src/assets": ["src/assets/*"],
+			"@constants/*": ["src/constants/*"],
+			"@shared-styles/*": ["src/shared-styles/*"],
+			"@components/*": ["src/components/*"],
+			"@typings/*": ["src/typings/*"],
+			"@context/*": ["src/context/*"]
+		}
+	}
+}
