@@ -3,7 +3,7 @@ import { FormikProps, useFormik } from 'formik';
 import * as yup from 'yup';
 import CheckBoxOutlineBlankOutlinedIcon from '@mui/icons-material/CheckBoxOutlineBlankOutlined';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
-import { Checkbox, FormControlLabel, FormHelperText, FormControl } from '@mui/material';
+import { Checkbox } from '@mui/material';
 
 import CustomContainer from '@components/shared/CustomContainer';
 import {
