@@ -1,11 +1,11 @@
 import styled from 'styled-components';
+import { Skeleton } from '@mui/material';
 
 import { customThemeColors } from '@shared-styles/theme';
-import { IMAGE_GENERATING_LINK } from '@constants/paths';
 
 export const StyledContainer = styled.div`
 	width: 100%;
-	height: 46.25rem;
+	min-height: 50rem;
 	border-radius: 31.25rem 3.75rem 18.75rem 6.25rem;
 	background-color: ${customThemeColors.backgroundImage};
 	box-shadow: 0.625rem 0.25rem 0.25rem ${customThemeColors.backgroundImageShadow};
@@ -13,18 +13,31 @@ export const StyledContainer = styled.div`
 	margin-bottom: 1.875rem;
 `;
 
-export const StyledImg = styled.div`
+export const StyledImg = styled.img`
 	width: 100%;
-	height: 383px;
-	background-image: url(${IMAGE_GENERATING_LINK});
+	height: 24rem;
 	background-size: cover;
 	border-radius: 12.5rem 1.25rem 6.25rem 3.125rem;
 `;
 
-export const StyledNameBox = styled.div`
+export const StyledImgSkeleton = styled(Skeleton)`
 	width: 100%;
+	height: 24rem;
+	background-size: cover;
+	border-radius: 12.5rem 1.25rem 6.25rem 3.125rem;
+`;
+
+export const StyledTextSkeleton = styled(Skeleton)`
+	width: 50%;
+	height: 3rem;
+	text-align: center;
+`;
+
+export const StyledNameBox = styled.div`
+	min-width: 100%;
 	margin-top: 1.5rem;
 	position: relative;
+	padding-right: 6.875rem;
 
 	> p {
 		text-align: center;

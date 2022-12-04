@@ -3,6 +3,7 @@ import { TextFieldProps } from '@mui/material';
 
 export declare namespace NComponents {
 	type S = string;
+	type B = boolean;
 
 	interface IChildProps {
 		children: ReactNode;
@@ -12,6 +13,7 @@ export declare namespace NComponents {
 		name: S;
 		age: S;
 		eyeColor: S;
+		isLoading: B;
 	}
 
 	interface ICustomButton extends ButtonHTMLAttributes<HTMLButtonElement> {
