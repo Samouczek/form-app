@@ -1,4 +1,4 @@
-import { MouseEvent, useCallback, useEffect, useState } from 'react';
+import { MouseEvent, useCallback, useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Typography } from '@mui/material';
@@ -12,6 +12,7 @@ import { BUTTON } from '@constants/common';
 import { BASIC_DATA_PATH, REGISTRATION_FORM_PAGE } from '@constants/paths';
 import { theme } from '@shared-styles/theme';
 import { NQueries } from '@typings/queries';
+import { StarWarsContext } from '@context/StarWars';
 
 const PersonPage = (): JSX.Element => {
 	const navigation = useNavigate();
@@ -19,6 +20,7 @@ const PersonPage = (): JSX.Element => {
 	const [error, setError] = useState(null);
 	const [numberOfPerson, setNumberOfPerson] = useState(1);
 	const [personData, setPersonData] = useState<null | NQueries.IPerson>(null);
+	const { setStarWars } = useContext(StarWarsContext);
 
 	const getPerson = useCallback(async (numberOfPerson: number): Promise<any> => {
 		setIsLoading(true);
@@ -59,6 +61,20 @@ const PersonPage = (): JSX.Element => {
 	useEffect(() => {
 		getPerson(numberOfPerson);
 	}, [numberOfPerson]);
+
+	useEffect(() => {
+		personData &&
+			setStarWars(prevState => {
+				return [
+					...prevState,
+					{
+						name: personData?.name,
+						created: personData?.created,
+						vehicles: personData?.vehicles,
+					},
+				];
+			});
+	}, [personData]);
 
 	return (
 		<CustomContainer>
