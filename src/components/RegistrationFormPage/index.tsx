@@ -29,10 +29,10 @@ const validationSchema = yup.object({
 const RegistrationFormPage = (): JSX.Element => {
 	const { starWars } = useContext(StarWarsContext);
 	const initialValues: NComponents.IFormData = {
-		name: 'te',
-		password: 'sdf',
-		email: 'ts@tes.ts',
-		phoneNumber: '600600600',
+		name: '',
+		password: '',
+		email: '',
+		phoneNumber: '',
 	};
 
 	const {

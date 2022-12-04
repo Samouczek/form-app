@@ -4,6 +4,15 @@ import { theme } from '@shared-styles/theme';
 
 export const StyledBox = styled(Box)`
 	padding: 6.25rem 12rem 6.25rem 12rem;
+	display: flex;
+	flex-direction: column;
+
+	> button {
+		margin-top: 1.5rem;
+		text-align: center;
+		padding-left: 0;
+		align-self: center;
+	}
 `;
 
 export const StyledHeading = styled.div`
