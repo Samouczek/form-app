@@ -50,6 +50,7 @@ const RegistrationFormPage = (): JSX.Element => {
 
 	const handleSave = (event: MouseEvent<HTMLButtonElement>): void => {
 		event.preventDefault();
+		handleSubmit();
 	};
 
 	return (
@@ -63,46 +64,55 @@ const RegistrationFormPage = (): JSX.Element => {
 					onChange={handleChange}
 					value={name}
 					error={touchedName && Boolean(nameError)}
-					id={REGISTRATION.LOGIN_LABEL}
-					name={REGISTRATION.LOGIN_LABEL}
+					id='name'
+					name='name'
 					autoComplete='off'
 					variant='standard'
 					formLabel={REGISTRATION.LOGIN_LABEL}
+					type='text'
 				/>
 				<CustomInput
 					helperText={touchedPassword && passwordError}
 					onChange={handleChange}
 					value={password}
 					error={touchedPassword && Boolean(passwordError)}
-					id={REGISTRATION.PASSWORD_LABEL}
-					name={REGISTRATION.PASSWORD_LABEL}
+					id='password'
+					name='password'
 					autoComplete='off'
 					variant='standard'
 					formLabel={REGISTRATION.PASSWORD_LABEL}
+					type='password'
 				/>
 				<CustomInput
 					helperText={touchedEmail && emailError}
 					onChange={handleChange}
 					value={email}
 					error={touchedEmail && Boolean(emailError)}
-					id={REGISTRATION.EMAIL_LABEL}
-					name={REGISTRATION.EMAIL_LABEL}
+					id='email'
+					name='email'
 					autoComplete='off'
 					variant='standard'
 					formLabel={REGISTRATION.EMAIL_LABEL}
+					type='text'
 				/>
 				<CustomInput
 					helperText={touchedPhoneNumber && phoneNumberError}
 					onChange={handleChange}
 					value={phoneNumber}
 					error={touchedPhoneNumber && Boolean(phoneNumberError)}
-					id={REGISTRATION.PHONE_NUMBER_LABEL}
-					name={REGISTRATION.PHONE_NUMBER_LABEL}
+					id='phoneNumber'
+					name='phoneNumber'
 					autoComplete='off'
 					variant='standard'
 					formLabel={REGISTRATION.PHONE_NUMBER_LABEL}
+					type='text'
 				/>
-				<CustomButton backgroundColor={theme.palette.primary.main} onClick={handleSave} text={BUTTON.SAVE} />
+				<CustomButton
+					type={'submit'}
+					backgroundColor={theme.palette.primary.main}
+					onClick={handleSave}
+					text={BUTTON.SAVE}
+				/>
 			</StyledBox>
 		</CustomContainer>
 	);
