@@ -8,6 +8,7 @@ module.exports = function override(config) {
 		'@components': 'src/components',
 		'@typings': 'src/typings',
 		'@context': 'src/context',
+		'@queries': 'src/queries',
 	})(config);
 
 	return config;

@@ -1,6 +1,6 @@
-import { MouseEvent } from 'react';
-import * as yup from 'yup';
+import { MouseEvent, useContext } from 'react';
 import { FormikProps, useFormik } from 'formik';
+import * as yup from 'yup';
 
 import CustomContainer from '@components/shared/CustomContainer';
 import { StyledBox, StyledHeading } from '@components/RegistrationFormPage/style';
@@ -10,6 +10,8 @@ import { REGISTRATION } from '@constants/components';
 import { BUTTON } from '@constants/common';
 import { theme } from '@shared-styles/theme';
 import { NComponents } from '@typings/components';
+import { StarWarsContext } from '@context/StarWars';
+import { sendForm } from '@queries/sendForm';
 
 const phoneRegExp =
 	/^(?:(?:(?:\+|00)?48)|(?:\(\+?48\)))?(?:1[2-8]|2[2-69]|3[2-49]|4[1-8]|5[0-9]|6[0-35-9]|[7-8][1-9]|9[145])\d{7}$/;
@@ -25,15 +27,15 @@ const validationSchema = yup.object({
 });
 
 const RegistrationFormPage = (): JSX.Element => {
+	const { starWars } = useContext(StarWarsContext);
 	const initialValues: NComponents.IFormData = {
-		name: '',
-		password: '',
-		email: '',
-		phoneNumber: '',
+		name: 'te',
+		password: 'sdf',
+		email: 'ts@tes.ts',
+		phoneNumber: '600600600',
 	};
 
 	const {
-		isValid,
 		handleSubmit,
 		values: { name, password, email, phoneNumber },
 		touched: { name: touchedName, password: touchedPassword, email: touchedEmail, phoneNumber: touchedPhoneNumber },
@@ -43,7 +45,8 @@ const RegistrationFormPage = (): JSX.Element => {
 		enableReinitialize: true,
 		initialValues,
 		validationSchema,
-		onSubmit: (values, { resetForm }) => {
+		onSubmit: ({ name, password, email, phoneNumber }, { resetForm }) => {
+			sendForm(name, password, email, phoneNumber, starWars);
 			resetForm();
 		},
 	});
@@ -108,7 +111,7 @@ const RegistrationFormPage = (): JSX.Element => {
 					type='text'
 				/>
 				<CustomButton
-					type={'submit'}
+					type='submit'
 					backgroundColor={theme.palette.primary.main}
 					onClick={handleSave}
 					text={BUTTON.SAVE}
