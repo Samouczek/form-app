@@ -1,9 +1,18 @@
-import { MouseEvent, useContext, useEffect } from 'react';
+import { MouseEvent, useContext } from 'react';
 import { FormikProps, useFormik } from 'formik';
 import * as yup from 'yup';
+import CheckBoxOutlineBlankOutlinedIcon from '@mui/icons-material/CheckBoxOutlineBlankOutlined';
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import { Checkbox, FormControlLabel, FormHelperText, FormControl } from '@mui/material';
 
 import CustomContainer from '@components/shared/CustomContainer';
-import { StyledBox, StyledHeading } from '@components/RegistrationFormPage/style';
+import {
+	StyledBox,
+	StyledFormControl,
+	StyledFormControlLabel,
+	StyledHeading,
+	StyledText,
+} from '@components/RegistrationFormPage/style';
 import CustomButton from '@components/shared/CustomButton';
 import CustomInput from '@components/shared/CustomInput';
 import { REGISTRATION } from '@constants/components';
@@ -12,7 +21,6 @@ import { theme } from '@shared-styles/theme';
 import { NComponents } from '@typings/components';
 import { StarWarsContext } from '@context/StarWars';
 import { sendForm } from '@queries/sendForm';
-import { Checkbox, FormControlLabel, FormHelperText } from '@mui/material';
 
 const phoneRegExp =
 	/^(?:(?:(?:\+|00)?48)|(?:\(\+?48\)))?(?:1[2-8]|2[2-69]|3[2-49]|4[1-8]|5[0-9]|6[0-35-9]|[7-8][1-9]|9[145])\d{7}$/;
@@ -78,7 +86,7 @@ const RegistrationFormPage = (): JSX.Element => {
 					<h1>{REGISTRATION.HEADING}</h1>
 				</StyledHeading>
 				<CustomInput
-					helperText={touchedName && nameError}
+					helperText={nameError ? touchedName && nameError : ' '}
 					onChange={handleChange}
 					value={name}
 					error={touchedName && Boolean(nameError)}
@@ -90,7 +98,7 @@ const RegistrationFormPage = (): JSX.Element => {
 					type='text'
 				/>
 				<CustomInput
-					helperText={touchedPassword && passwordError}
+					helperText={passwordError ? touchedPassword && passwordError : ' '}
 					onChange={handleChange}
 					value={password}
 					error={touchedPassword && Boolean(passwordError)}
@@ -102,7 +110,7 @@ const RegistrationFormPage = (): JSX.Element => {
 					type='password'
 				/>
 				<CustomInput
-					helperText={touchedEmail && emailError}
+					helperText={emailError ? touchedEmail && emailError : ' '}
 					onChange={handleChange}
 					value={email}
 					error={touchedEmail && Boolean(emailError)}
@@ -114,7 +122,7 @@ const RegistrationFormPage = (): JSX.Element => {
 					type='text'
 				/>
 				<CustomInput
-					helperText={touchedPhoneNumber && phoneNumberError}
+					helperText={phoneNumberError ? touchedPhoneNumber && phoneNumberError : ' '}
 					onChange={handleChange}
 					value={phoneNumber}
 					error={touchedPhoneNumber && Boolean(phoneNumberError)}
@@ -125,21 +133,36 @@ const RegistrationFormPage = (): JSX.Element => {
 					formLabel={REGISTRATION.PHONE_NUMBER_LABEL}
 					type='text'
 				/>
-				<FormControlLabel
-					control={
-						<Checkbox
-							checked={acceptsRegulations}
-							onChange={handleChange}
-							name='acceptsRegulations'
-							id='acceptsRegulations'
-							disableRipple={true}
-						/>
-					}
-					label={REGISTRATION.ACCEPT_REGULATIONS}
-				/>
-				{touchedAcceptsRegulations && acceptsRegulationsError && (
-					<FormHelperText error={true}>{REGISTRATION.ACCEPT_REGULATIONS_HELPER_TEXT}</FormHelperText>
-				)}
+				<StyledFormControl sx={{ marginTop: '2.375rem' }}>
+					<StyledFormControlLabel
+						control={
+							<Checkbox
+								checked={acceptsRegulations}
+								onChange={handleChange}
+								name='acceptsRegulations'
+								id='acceptsRegulations'
+								disableRipple={true}
+								sx={{ fontSize: '1.875rem' }}
+								checkedIcon={<CheckBoxIcon sx={{ fontSize: '1.875rem' }} />}
+								icon={
+									<CheckBoxOutlineBlankOutlinedIcon
+										sx={{
+											fontSize: '1.875rem',
+											color:
+												touchedAcceptsRegulations && acceptsRegulationsError
+													? theme.palette.error.main
+													: theme.palette.text.primary,
+										}}
+									/>
+								}
+							/>
+						}
+						label={REGISTRATION.ACCEPT_REGULATIONS}
+					/>
+					{touchedAcceptsRegulations && acceptsRegulationsError && (
+						<StyledText>{REGISTRATION.ACCEPT_REGULATIONS_HELPER_TEXT}</StyledText>
+					)}
+				</StyledFormControl>
 				<CustomButton
 					type='submit'
 					backgroundColor={theme.palette.primary.main}
