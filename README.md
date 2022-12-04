@@ -1,6 +1,8 @@
 # Form App
 
 This project was generated with REACT version 18.2.0.
+The application downloads data about a person from api https://swapi.py4e.com/, presents them.
+Contains a contact form, simulates sending the form.
 
 ## Getting Started
 
