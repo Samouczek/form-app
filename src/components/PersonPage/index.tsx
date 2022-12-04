@@ -3,12 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { Typography } from '@mui/material';
 
 import CustomContainer from '@components/shared/CustomContainer';
-import { StyledBox, StyledButton, StyledProfileBox } from '@components/PersonPage/style';
+import { StyledBox, StyledProfileBox } from '@components/PersonPage/style';
 import { PERSON_PERFORMING_TASK } from '@constants/components';
 import { BUTTON } from '@constants/common';
 import { REGISTRATION_FORM_PAGE } from '@constants/paths';
 import { theme } from '@shared-styles/theme';
 import PersonDetails from '@components/PersonPage/PersonDetails';
+import CustomButton from '@components/shared/CustomButton';
 
 const PersonPage = (): JSX.Element => {
 	const navigation = useNavigate();
@@ -30,15 +31,19 @@ const PersonPage = (): JSX.Element => {
 		<CustomContainer>
 			<StyledBox>
 				<Typography sx={{ fontSize: '1.875rem' }}>{PERSON_PERFORMING_TASK}</Typography>
-				<StyledButton backgroundColor={theme.palette.secondary.dark} onClick={handleRegistration}>
-					{BUTTON.REGISTRATION_FORM}
-				</StyledButton>
+				<CustomButton
+					backgroundColor={theme.palette.secondary.dark}
+					onClick={handleRegistration}
+					text={BUTTON.REGISTRATION_FORM}
+				/>
 			</StyledBox>
 			<StyledProfileBox>
 				<PersonDetails name={name} age={age} eyeColor={eyeColor} />
-				<StyledButton backgroundColor={theme.palette.secondary.main} onClick={handleNextProfiles}>
-					{BUTTON.NEXT_PROFILES}
-				</StyledButton>
+				<CustomButton
+					backgroundColor={theme.palette.secondary.main}
+					onClick={handleNextProfiles}
+					text={BUTTON.NEXT_PROFILES}
+				/>
 			</StyledProfileBox>
 		</CustomContainer>
 	);

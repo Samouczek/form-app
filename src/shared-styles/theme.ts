@@ -35,6 +35,7 @@ export const theme = createTheme({
 					fontFamily: ['Inter', 'sans-serif'].join(','),
 					color: theme.palette.error.main,
 					fontWeight: 300,
+					fontStyle: 'italic',
 					fontSize: '1.25rem',
 					lineHeight: '2rem',
 				}),
