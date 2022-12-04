@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Box } from '@mui/material';
+
 import { theme } from '@shared-styles/theme';
 
 export const StyledBox = styled(Box)`
