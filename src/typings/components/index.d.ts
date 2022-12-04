@@ -31,5 +31,6 @@ export declare namespace NComponents {
 		password: S;
 		email: S;
 		phoneNumber: S;
+		acceptsRegulations: B;
 	}
 }

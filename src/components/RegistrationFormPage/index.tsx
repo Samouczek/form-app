@@ -1,4 +1,4 @@
-import { MouseEvent, useContext } from 'react';
+import { MouseEvent, useContext, useEffect } from 'react';
 import { FormikProps, useFormik } from 'formik';
 import * as yup from 'yup';
 
@@ -12,6 +12,7 @@ import { theme } from '@shared-styles/theme';
 import { NComponents } from '@typings/components';
 import { StarWarsContext } from '@context/StarWars';
 import { sendForm } from '@queries/sendForm';
+import { Checkbox, FormControlLabel, FormHelperText } from '@mui/material';
 
 const phoneRegExp =
 	/^(?:(?:(?:\+|00)?48)|(?:\(\+?48\)))?(?:1[2-8]|2[2-69]|3[2-49]|4[1-8]|5[0-9]|6[0-35-9]|[7-8][1-9]|9[145])\d{7}$/;
@@ -24,6 +25,7 @@ const validationSchema = yup.object({
 		.string()
 		.matches(phoneRegExp, REGISTRATION.PHONE_HELPER_TEXT)
 		.required(REGISTRATION.PHONE_HELPER_TEXT_REQUIRED),
+	acceptsRegulations: yup.bool().oneOf([true], REGISTRATION.ACCEPT_REGULATIONS_HELPER_TEXT),
 });
 
 const RegistrationFormPage = (): JSX.Element => {
@@ -33,20 +35,33 @@ const RegistrationFormPage = (): JSX.Element => {
 		password: '',
 		email: '',
 		phoneNumber: '',
+		acceptsRegulations: false,
 	};
 
 	const {
 		handleSubmit,
-		values: { name, password, email, phoneNumber },
-		touched: { name: touchedName, password: touchedPassword, email: touchedEmail, phoneNumber: touchedPhoneNumber },
+		values: { name, password, email, phoneNumber, acceptsRegulations },
+		touched: {
+			name: touchedName,
+			password: touchedPassword,
+			email: touchedEmail,
+			phoneNumber: touchedPhoneNumber,
+			acceptsRegulations: touchedAcceptsRegulations,
+		},
 		handleChange,
-		errors: { name: nameError, password: passwordError, email: emailError, phoneNumber: phoneNumberError },
+		errors: {
+			name: nameError,
+			password: passwordError,
+			email: emailError,
+			phoneNumber: phoneNumberError,
+			acceptsRegulations: acceptsRegulationsError,
+		},
 	}: FormikProps<NComponents.IFormData> = useFormik<NComponents.IFormData>({
 		enableReinitialize: true,
 		initialValues,
 		validationSchema,
 		onSubmit: ({ name, password, email, phoneNumber }, { resetForm }) => {
-			sendForm(name, password, email, phoneNumber, starWars);
+			sendForm(name, password, email, phoneNumber, acceptsRegulations, starWars);
 			resetForm();
 		},
 	});
@@ -110,6 +125,21 @@ const RegistrationFormPage = (): JSX.Element => {
 					formLabel={REGISTRATION.PHONE_NUMBER_LABEL}
 					type='text'
 				/>
+				<FormControlLabel
+					control={
+						<Checkbox
+							checked={acceptsRegulations}
+							onChange={handleChange}
+							name='acceptsRegulations'
+							id='acceptsRegulations'
+							disableRipple={true}
+						/>
+					}
+					label={REGISTRATION.ACCEPT_REGULATIONS}
+				/>
+				{touchedAcceptsRegulations && acceptsRegulationsError && (
+					<FormHelperText error={true}>{REGISTRATION.ACCEPT_REGULATIONS_HELPER_TEXT}</FormHelperText>
+				)}
 				<CustomButton
 					type='submit'
 					backgroundColor={theme.palette.primary.main}

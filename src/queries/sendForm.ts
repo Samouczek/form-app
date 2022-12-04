@@ -8,6 +8,7 @@ export const sendForm = async (
 	password: string,
 	email: string,
 	phoneNumber: string,
+	acceptsRegulations: boolean,
 	starWars: NQueries.IStarWarsData[],
 ): Promise<any> => {
 	const star_wars_data = JSON.stringify(starWars);
@@ -15,7 +16,7 @@ export const sendForm = async (
 	try {
 		await axios.post<NQueries.IRegistrationData>(
 			`${PATH_TO_SUBMIT_FORM}`,
-			{ name, password, email, phoneNumber, star_wars_data },
+			{ name, password, email, phoneNumber, acceptsRegulations, star_wars_data },
 			{
 				headers: {
 					Accept: 'application/json',

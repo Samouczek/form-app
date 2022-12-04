@@ -24,6 +24,7 @@ export declare namespace NQueries {
 		password: S;
 		email: S;
 		phoneNumber: S;
+		acceptsRegulations: B;
 		starWars: JSON;
 	}
 
