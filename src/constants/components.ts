@@ -1,4 +1,4 @@
-export const PERSON_PERFORMING_TASK = 'imie i nazwisko';
+export const PERSON_PERFORMING_TASK = 'Katarzyna Romatowska';
 
 export const PROFILE = {
 	AGE: 'age:',
