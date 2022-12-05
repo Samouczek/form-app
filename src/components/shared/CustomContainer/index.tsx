@@ -8,11 +8,11 @@ const CustomContainer = ({ children }: NComponents.IChildProps): JSX.Element => 
 		<Container
 			disableGutters={true}
 			maxWidth={false}
-			sx={{ backgroundColor: customThemeColors.background, height: '100vh' }}>
+			sx={{ backgroundColor: customThemeColors.background, minHeight: '100vh' }}>
 			<Container
 				maxWidth='md'
 				disableGutters={true}
-				sx={{ backgroundColor: theme.palette.common.white, height: '100vh' }}>
+				sx={{ backgroundColor: theme.palette.common.white, minHeight: '100vh' }}>
 				{children}
 			</Container>
 		</Container>
